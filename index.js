@@ -8,7 +8,13 @@ const CORS = require('cors')
 const bodyParser = require('body-parser')
 
 // init app
+const router = require('./routes')
+
+// init app
 const app = express()
+
+// set timezone default
+process.env.TZ = "Asia/Jakarta";
 
 // use cors middle
 app.use(CORS());
@@ -24,8 +30,15 @@ const port = 3000;
 
 // routes
 app.get('/', (req, res) => {
-    res.send('Hello World')
+    const waktu = new Date().toString();
+    res.send(waktu)
+
 })
+
+// define routes
+app.use('/api', router);
+
+console.log(new Date().toString());
 
 // start server
 app.listen(port, ()=> {
