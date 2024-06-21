@@ -10,6 +10,9 @@ const bodyParser = require('body-parser')
 // init app
 const router = require('./routes')
 
+// import dotenv
+require('dotenv').config();
+
 // init app
 const app = express()
 
@@ -26,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 // define port
-const port = 3000;
+const port = process.env.PORT;
 
 // routes
 app.get('/', (req, res) => {
